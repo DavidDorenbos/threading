@@ -113,6 +113,8 @@
     <Compile Include="Source\Engine\FootballPlayer.cs" />
     <Compile Include="Source\Engine\Globals.cs" />
     <Compile Include="Source\Engine\Field.cs" />
+    <Compile Include="Source\Engine\Input\Keyboard\McKey.cs" />
+    <Compile Include="Source\Engine\Input\McKeyboard.cs" />
     <Compile Include="Source\Engine\Team.cs" />
   </ItemGroup>
   <ItemGroup>
