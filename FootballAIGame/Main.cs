@@ -45,6 +45,7 @@ namespace FootballAIGame
             Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            Globals.keyboard = new McKeyboard();
         }
 
         /// <summary>
@@ -64,8 +65,9 @@ namespace FootballAIGame
         protected override void Update(GameTime gameTime)
         {
             // TODO: Add your update logic here
+            Globals.keyboard.Update();
             field.Update();
-
+            Globals.keyboard.UpdateOld();
             base.Update(gameTime);
         }
 

@@ -27,9 +27,9 @@ namespace FootballAIGame
         public Texture2D mySprite;
         private delegate void Del(FootballPlayer player);
         private Del delegateMovement;
-        public McKeyboard key;
+        public float direction;
 
-        public FootballPlayer(Vector2 pos, Vector2 dims, string name, int speed,
+        public FootballPlayer(Vector2 dims, Vector2 pos, string name, int speed,
             int strength, int price, string path, string playerType) {
             this.pos = pos;
             this.dims = dims;
@@ -37,6 +37,7 @@ namespace FootballAIGame
             this.speed = speed;
             this.strength = strength;
             this.price = price;
+            this.direction = 0;
             mySprite = Globals.content.Load<Texture2D>(path);
             SetDeligate(playerType);
         }
@@ -45,7 +46,6 @@ namespace FootballAIGame
             switch (playerType) {
                 case "human":
                     delegateMovement = FootballTypes.HumanPlayer;
-                    key = new McKeyboard();
                     break;
                 case "keeper":
                     delegateMovement = FootballTypes.KeeperAI;
@@ -62,6 +62,37 @@ namespace FootballAIGame
             }
         }
 
+        public void move() {
+            float x = 0, y = 0;
+            if(direction <= 100) {
+                x = 0 + direction / 100;
+                y = (1 - direction / 100) * -1;
+            }
+            else if(direction <= 200) {
+                x = 1 - (direction - 100) / 100;
+                y = 0 + (direction - 100) / 100;
+            }
+            else if(direction <= 300) {
+                x = 0 - (direction - 200) / 100;
+                y = 1 - (direction - 200) / 100;
+            }
+            else if(direction <= 400) {
+                x = (1 - (direction - 300) / 100) * -1;
+                y = (0 + (direction - 300) / 100) * -1;
+            }
+            pos = new Vector2(pos.X + x, pos.Y + y);
+        }
+
+        public void AddDirection(float amount) {
+            direction = direction + amount;
+            if(direction < 0) {
+                direction = 398;
+            }
+            else if(direction > 400) {
+                direction = 2;
+            }
+        }
+
         public void Update() { 
             delegateMovement(this);
         }
@@ -69,7 +100,7 @@ namespace FootballAIGame
         public void Draw() {
             if (mySprite != null) {
                 //these 3 lines are 1 line
-                Globals.spriteBatch.Draw(mySprite, new Rectangle((int)dims.X, (int)dims.Y, (int)pos.X, (int)pos.Y),
+                Globals.spriteBatch.Draw(mySprite, new Rectangle((int)pos.X, (int)pos.Y, (int)dims.X, (int)dims.Y),
                     null, Color.White, 0.0f, new Vector2(mySprite.Bounds.Width / 2, mySprite.Bounds.Height / 2),
                     new SpriteEffects(), 0);
             }
