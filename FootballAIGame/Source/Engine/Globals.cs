@@ -18,5 +18,9 @@ namespace FootballAIGame {
     public class Globals {
         public static ContentManager content;
         public static SpriteBatch spriteBatch;
+        public static McKeyboard keyboard;
+        public static int screenWidth;
+        public static int screenHeight;
+
     }
 }
