@@ -13,6 +13,7 @@ namespace FootballAIGame
     {
         GraphicsDeviceManager graphics;
         Field field;
+        Vector2 playerDims;
 
         public Main()
         {
@@ -30,8 +31,24 @@ namespace FootballAIGame
         {
             // TODO: Add your initialization logic here
             base.Initialize();
+            playerDims = new Vector2(48, 48);
+
+            graphics.PreferredBackBufferWidth = 1000;
+            graphics.PreferredBackBufferHeight = 500;
+
+            graphics.ApplyChanges();
+
             this.field = new Field(new Team(new LinkedList<FootballPlayer>(), new LinkedList<Task>()), 
                 new Team(new LinkedList<FootballPlayer>(), new LinkedList<Task>()), new Ball());
+
+            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(0, 0), 
+                "humanplayer", 10, 10, 10, "2d/sprite", "human"));
+            field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 60),
+                "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
+            field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 500),
+                "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
+            field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(360, 60),
+                "attacker", 10, 10, 10, "2d/sprite", "attacker"));
         }
 
         /// <summary>

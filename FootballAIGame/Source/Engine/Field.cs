@@ -18,8 +18,8 @@ namespace FootballAIGame {
 
     class Field {
 
-        private Team teamHome;
-        private Team teamOut;
+        public Team teamHome;
+        public Team teamOut;
         private Ball ball;
         //public Field() {
         //players = new LinkedList<FootballPlayer>();

@@ -18,7 +18,7 @@ namespace FootballAIGame
         }
 
         public static void MidfielderAI(FootballPlayer player) {
-
+            
         }
 
         public static void KeeperAI(FootballPlayer player) {
