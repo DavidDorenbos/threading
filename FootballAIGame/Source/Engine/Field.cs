@@ -31,6 +31,7 @@ namespace FootballAIGame {
             this.teamHome = teamHome;
             this.teamOut = teamOut;
             this.ball = ball;
+            ball.field = this;
         }
 
         public void Update() {

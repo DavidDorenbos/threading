@@ -15,17 +15,20 @@ namespace FootballAIGame
         private Vector2 pos;
         private Vector2 dims;
         public Texture2D mySprite;
-
+        private Field _field;
+        public Field field {
+            set { _field = value; }
+        }
         public Ball()
         {
             pos = new Vector2(100, 100);
-            dims = new Vector2(30, 30);
+            dims = new Vector2(20, 20);
             mySprite = Globals.content.Load<Texture2D>("2d/Ball");
         }
 
         public void Update()
         {
-
+            
         }
 
         public void Draw() {
