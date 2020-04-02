@@ -76,7 +76,7 @@ namespace FootballAIGame
 
         public async void SaveMatchHistory(ScoreBoard gameBoard)
         {
-
+            //Now score is set here, needs to be set when the game is finished
             gameBoard.OutScore = 6;
             gameBoard.HomeScore = 10;
             string json = JsonConvert.SerializeObject(gameBoard);
