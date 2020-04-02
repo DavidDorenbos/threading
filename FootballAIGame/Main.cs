@@ -46,10 +46,10 @@ namespace FootballAIGame
 
             graphics.ApplyChanges();
 
-            this.field = new Field(new Team(new LinkedList<FootballPlayer>(), new LinkedList<Task>()), 
+            this.field = new Field(new Team(new LinkedList<FootballPlayer>(), new LinkedList<Task>()),
                 new Team(new LinkedList<FootballPlayer>(), new LinkedList<Task>()), new Ball());
 
-            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(0, 0), 
+            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(0, 0),
                 "humanplayer", 10, 10, 10, "2d/sprite", "human"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 60),
                 "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
@@ -77,8 +77,8 @@ namespace FootballAIGame
         public async void SaveMatchHistory(ScoreBoard gameBoard)
         {
             //Now score is set here, needs to be set when the game is finished
-            gameBoard.OutScore = 6;
-            gameBoard.HomeScore = 10;
+            gameBoard.OutScore = 8;
+            gameBoard.HomeScore = 88;
             string json = JsonConvert.SerializeObject(gameBoard);
             String JSONtxt = File.ReadAllText(ApplicationData.Current.LocalFolder.Path + "/ScoreBoard.json");
             List<ScoreBoard> boards = JsonConvert.DeserializeObject<List<ScoreBoard>>(JSONtxt);
@@ -98,7 +98,7 @@ namespace FootballAIGame
                 await FileIO.WriteTextAsync(file, json);
             }
 
-    
+
 
 
         }

@@ -110,6 +110,9 @@
     <Compile Include="Main_menu.xaml.cs">
       <DependentUpon>Main_menu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MatchHistory.xaml.cs">
+      <DependentUpon>MatchHistory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
@@ -165,6 +168,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Main_menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MatchHistory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
