@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="FootballAIGame.Settings"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FootballAIGame"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="Black">
+        <Rectangle HorizontalAlignment="Left" Height="148" Margin="0,0,0,0" VerticalAlignment="Top" Width="398">
+            <Rectangle.Fill>
+                <AcrylicBrush/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <TextBlock HorizontalAlignment="Left" Margin="61,30,0,0" Text="Settings" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="72" FontFamily="Arial Black" FontWeight="Bold"/>
+        <ComboBox x:Name="PlayTime" HorizontalAlignment="Center" Margin="0,300,0,0" VerticalAlignment="Top" DisplayMemberPath="Source" Header="Times" Height="200" Width="500" SelectedIndex="0" FontSize="50" BorderBrush="#66F3E0E0" Background="#66FFFFFF" RequestedTheme="Light">
+            <ComboBoxItem Content="3 Minuten" FontSize="50"/>
+            <ComboBoxItem Content="5 Minuten" FontSize="50"/>
+            <ComboBoxItem Content="10 Minuten" FontSize="50"/>
+        </ComboBox>
+        <Button Content="terug" HorizontalAlignment="Left" Margin="1269,1,0,0" VerticalAlignment="Top" Height="104" Width="221" Click="Button_Click" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="{x:Null}" FontFamily="Arial Black" FontWeight="Bold" Background="#FFF3E9E9" ClickMode="Press" Canvas.Left="517" Canvas.Top="207"/>
+
+    </Grid>
+</Page>
