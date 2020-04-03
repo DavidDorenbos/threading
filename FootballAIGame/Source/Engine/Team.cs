@@ -10,19 +10,13 @@ namespace FootballAIGame {
     class Team {
 
         public LinkedList<FootballPlayer> players { get; }
-        LinkedList<Task> tasks;
+        public bool hasBall = false;
 
-        public Team(LinkedList<FootballPlayer> players, LinkedList<Task> tasks)
-        {
+        public Team(LinkedList<FootballPlayer> players) {
             this.players = players;
-            this.tasks = tasks;
         }
 
-        public void SetTasks() {
-
-        }
-
-
+       
         public void Update() {
             foreach(FootballPlayer player in players) {
                 player.Update();

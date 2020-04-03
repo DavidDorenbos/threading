@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Framework;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Threading;
+
 
 namespace FootballAIGame
 {
@@ -31,17 +33,17 @@ namespace FootballAIGame
         {
             // TODO: Add your initialization logic here
             base.Initialize();
-            playerDims = new Vector2(48, 48);
+            playerDims = new Vector2(60, 60);
 
             graphics.PreferredBackBufferWidth = 1000;
             graphics.PreferredBackBufferHeight = 500;
 
             graphics.ApplyChanges();
 
-            this.field = new Field(new Team(new LinkedList<FootballPlayer>(), new LinkedList<Task>()), 
-                new Team(new LinkedList<FootballPlayer>(), new LinkedList<Task>()), new Ball());
+            this.field = new Field(new Team(new LinkedList<FootballPlayer>()), 
+                new Team(new LinkedList<FootballPlayer>()), new Ball());
 
-            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(0, 0), 
+            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(30, 30), 
                 "humanplayer", 10, 10, 10, "2d/sprite", "human"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 60),
                 "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
@@ -49,6 +51,12 @@ namespace FootballAIGame
                 "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(360, 60),
                 "attacker", 10, 10, 10, "2d/sprite", "attacker"));
+
+            field.teamOut.players.AddLast(new FootballPlayer(playerDims, new Vector2(600, 400),
+    "attacker", 10, 10, 10, "2d/sprite", "attacker"));
+
+
+            field.InitiateTasks();
         }
 
         /// <summary>

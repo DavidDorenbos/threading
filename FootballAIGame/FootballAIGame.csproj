@@ -115,6 +115,7 @@
     <Compile Include="Source\Engine\Field.cs" />
     <Compile Include="Source\Engine\Input\Keyboard\McKey.cs" />
     <Compile Include="Source\Engine\Input\McKeyboard.cs" />
+    <Compile Include="Source\Engine\Node.cs" />
     <Compile Include="Source\Engine\Team.cs" />
     <Compile Include="Source\Engine\Timer.cs" />
   </ItemGroup>
@@ -129,6 +130,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\2D\Ball.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\2D\Goal.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="FootballAIGame_TemporaryKey.pfx" />

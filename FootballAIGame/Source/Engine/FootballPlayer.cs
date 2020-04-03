@@ -29,6 +29,11 @@ namespace FootballAIGame
         private delegate void Del(FootballPlayer player);
         private Del delegateMovement;
         public float direction;
+        public string playerType;
+        public bool hasBall;
+        public bool hadDistance;
+        public bool moving;
+
 
         public FootballPlayer(Vector2 dims, Vector2 pos, string name, int speed,
             int strength, int price, string path, string playerType) {
@@ -39,9 +44,11 @@ namespace FootballAIGame
             this.strength = strength;
             this.price = price;
             this.direction = 0;
-
+            hasBall = false;
             mySprite = Globals.content.Load<Texture2D>(path);
             SetDeligate(playerType);
+            this.playerType = playerType;
+            hadDistance = true;
         }
 
         private void SetDeligate(string playerType) {
@@ -63,8 +70,7 @@ namespace FootballAIGame
                     break;
             }
         }
-        //TODO: ask 
-        public void move() {
+        public Vector2 move(Vector2 pos) {
             float x = 0, y = 0;
             if(direction <= 90) {
                 x = 0 + direction / 90;
@@ -82,7 +88,7 @@ namespace FootballAIGame
                 x = (1 - (direction - 270) / 90) * -1;
                 y = (0 + (direction - 270) / 90) * -1;
             }
-            pos = new Vector2(pos.X + x, pos.Y + y);
+            return Globals.OutOfBounds(new Vector2(pos.X + x, pos.Y + y)) ? pos : new Vector2(pos.X + x, pos.Y + y);
         }
 
         public void AddDirection(float amount) {
@@ -94,14 +100,45 @@ namespace FootballAIGame
                 direction = 2;
             }
         }
-        //TODO: write out of bounds
-        private Boolean OutOfBounds() {
-            return true;
+
+        public void setHadDistance()
+        {
+            if(!hadDistance && Globals.ball.GetDistance(this.pos) > 50f) {
+                hadDistance = true;
+            }
+        }
+        //TODO: fix fucking space to something ai could also do...
+        private void Shoot()
+        {
+            if(hasBall && Globals.keyboard.GetPress("Space")) {
+                Globals.ball.Shoot(direction);
+                hasBall = false;
+            }
+        }
+        
+        public void GetBall()
+        {
+            if(Globals.ball.GetDistance(this.pos) < 10f && hadDistance) {
+                hasBall = true;
+            }
+            else {
+                hasBall = false;
+            }
         }
 
 
+        private void MoveBall()
+        {
+            if (hasBall && Globals.ball.GetDistance(pos) < 15f && moving) {
+                Globals.ball.pos = move(Globals.ball.pos);
+                Globals.ball.pos = move(Globals.ball.pos);
+            }
+        }
+
         public void Update() { 
             delegateMovement(this);
+            MoveBall();
+            Shoot();
         }
 
         public void Draw() {
