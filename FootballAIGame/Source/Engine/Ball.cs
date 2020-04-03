@@ -26,7 +26,6 @@ namespace FootballAIGame
         {
             pos = new Vector2(100, 100);
             dims = new Vector2(20, 20);
-            mySprite = Globals.content.Load<Texture2D>("2d/Ball");
             Globals.ball = this;
             taken = false;
             shotSpeed = 0f;
@@ -152,6 +151,7 @@ namespace FootballAIGame
         }
 
         public void Draw() {
+            mySprite = Globals.content.Load<Texture2D>("2d/Ball");
             if (mySprite != null) {
                 //these 3 lines are 1 line
                 Globals.spriteBatch.Draw(mySprite, new Rectangle((int)pos.X, (int)pos.Y, (int)dims.X, (int)dims.Y),

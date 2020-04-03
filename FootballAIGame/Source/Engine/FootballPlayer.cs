@@ -16,7 +16,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace FootballAIGame
 {
-    class FootballPlayer
+    public class FootballPlayer
     {
         public Vector2 pos;
         public Vector2 dims;
@@ -25,6 +25,7 @@ namespace FootballAIGame
         public int speed;
         public int strength;
         public int price;
+        private string path;
         public Texture2D mySprite;
         private delegate void Del(FootballPlayer player);
         private Del delegateMovement;
@@ -45,7 +46,7 @@ namespace FootballAIGame
             this.price = price;
             this.direction = 0;
             hasBall = false;
-            mySprite = Globals.content.Load<Texture2D>(path);
+            this.path = path;
             SetDeligate(playerType);
             this.playerType = playerType;
             hadDistance = true;
@@ -142,6 +143,7 @@ namespace FootballAIGame
         }
 
         public void Draw() {
+            mySprite = Globals.content.Load<Texture2D>(path);
             if (mySprite != null) {
                 //these 3 lines are 1 line
                 Globals.spriteBatch.Draw(mySprite, new Rectangle((int)pos.X, (int)pos.Y, (int)dims.X, (int)dims.Y),

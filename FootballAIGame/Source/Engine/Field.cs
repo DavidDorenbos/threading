@@ -13,12 +13,14 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Diagnostics;
-
+using FootballAIGame.Source;
+using Windows.UI.Xaml;
 #endregion
+
 //TODO: add debug key ;
 namespace FootballAIGame {
 
-    class Field {
+    public class Field {
 
         public Team teamHome;
         public Team teamOut;
@@ -29,6 +31,7 @@ namespace FootballAIGame {
         //players = new LinkedList<FootballPlayer>();
         //players.AddFirst(new FootballPlayer("2d/sprite", new Vector2(300, 300), new Vector2(48, 48)));
         //}
+
 
         public Field(Team teamHome, Team teamOut, Ball ball)
         {
@@ -70,6 +73,7 @@ namespace FootballAIGame {
                 Debug.WriteLine("Key: {0} ValueCount: {1} ", entry.Key, entry.Value.players.Count);
             }
         }
+        public ScoreBoard Board { get; set; }
         public void Update() {
             foreach (KeyValuePair<string, Node> entry in tasks) {
                 entry.Value.RunTask();

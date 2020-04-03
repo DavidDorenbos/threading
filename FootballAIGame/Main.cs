@@ -1,10 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FootballAIGame.Source;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Framework;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
-
+using Windows.Storage;
+using Windows.Storage.Pickers;
+using System;
 
 namespace FootballAIGame
 {
@@ -16,11 +21,13 @@ namespace FootballAIGame
         GraphicsDeviceManager graphics;
         Field field;
         Vector2 playerDims;
+        ScoreBoard board;
 
         public Main()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            board = new ScoreBoard();
         }
 
         /// <summary>
@@ -44,6 +51,7 @@ namespace FootballAIGame
                 new Team(new LinkedList<FootballPlayer>()), new Ball());
 
             field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(30, 30), 
+
                 "humanplayer", 10, 10, 10, "2d/sprite", "human"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 60),
                 "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
@@ -57,6 +65,8 @@ namespace FootballAIGame
 
 
             field.InitiateTasks();
+
+            SaveMatchHistory(board);
         }
 
         /// <summary>
@@ -71,6 +81,40 @@ namespace FootballAIGame
 
             // TODO: use this.Content to load your game content here
             Globals.keyboard = new McKeyboard();
+        }
+
+        public async void SaveMatchHistory(ScoreBoard gameBoard)
+        {
+            //Now score is set here, needs to be set when the game is finished
+            gameBoard.OutScore = 7;
+            gameBoard.HomeScore = 77;
+            //string json = JsonConvert.SerializeObject(gameBoard);
+            List<ScoreBoard> boards = new List<ScoreBoard>();
+            boards.Add(gameBoard);
+            boards.Add(gameBoard);
+            string outputJSON = Newtonsoft.Json.JsonConvert.SerializeObject(boards, Newtonsoft.Json.Formatting.Indented);
+
+            var item = await ApplicationData.Current.LocalFolder.TryGetItemAsync("ScoreBoard.json");
+
+            if (item != null)
+            {
+                String JSONtxt = File.ReadAllText(ApplicationData.Current.LocalFolder.Path + "/ScoreBoard.json");
+                boards = JsonConvert.DeserializeObject<List<ScoreBoard>>(JSONtxt);
+                boards.Add(gameBoard);
+                string jsonBoards = JsonConvert.SerializeObject(boards, Formatting.Indented);
+
+               // string outputJSONN = Newtonsoft.Json.JsonConvert.SerializeObject(boards, Newtonsoft.Json.Formatting.Indented);
+                var file = await ApplicationData.Current.LocalFolder.GetFileAsync("ScoreBoard.json");
+                await FileIO.WriteTextAsync(file, jsonBoards + Environment.NewLine);
+            }
+            else
+            {
+                var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("ScoreBoard.json");
+                await FileIO.WriteTextAsync(file, outputJSON);
+            }
+
+
+
         }
 
         /// <summary>

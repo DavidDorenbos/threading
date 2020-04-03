@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework;
 
 namespace FootballAIGame {
 
-    class Team {
+    public class Team {
 
-        public LinkedList<FootballPlayer> players { get; }
+        public LinkedList<FootballPlayer> players { get; set; }
         public bool hasBall = false;
 
         public Team(LinkedList<FootballPlayer> players) {
