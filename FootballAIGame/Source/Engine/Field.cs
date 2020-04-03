@@ -12,6 +12,8 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using FootballAIGame.Source;
+using Windows.UI.Xaml;
 #endregion
 
 namespace FootballAIGame {
@@ -26,6 +28,7 @@ namespace FootballAIGame {
         //players.AddFirst(new FootballPlayer("2d/sprite", new Vector2(300, 300), new Vector2(48, 48)));
         //}
 
+
         public Field(Team teamHome, Team teamOut, Ball ball)
         {
             this.teamHome = teamHome;
@@ -33,7 +36,7 @@ namespace FootballAIGame {
             this.ball = ball;
             ball.field = this;
         }
-
+        public ScoreBoard Board { get; set; }
         public void Update() {
             teamHome.Update();
             teamOut.Update();

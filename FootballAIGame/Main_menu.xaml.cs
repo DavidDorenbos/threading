@@ -46,7 +46,7 @@ namespace FootballAIGame
 
         private void Button_Click3(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(GamePage));
+            Frame.Navigate(typeof(MatchHistory));
         }
 
         private void Button_Click4(object sender, RoutedEventArgs e)

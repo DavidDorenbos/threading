@@ -1,8 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FootballAIGame.Source;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using MonoGame.Framework;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.Storage.Pickers;
+using System;
 
 namespace FootballAIGame
 {
@@ -14,11 +20,13 @@ namespace FootballAIGame
         GraphicsDeviceManager graphics;
         Field field;
         Vector2 playerDims;
+        ScoreBoard board;
 
         public Main()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            board = new ScoreBoard();
         }
 
         /// <summary>
@@ -38,10 +46,10 @@ namespace FootballAIGame
 
             graphics.ApplyChanges();
 
-            this.field = new Field(new Team(new LinkedList<FootballPlayer>(), new LinkedList<Task>()), 
+            this.field = new Field(new Team(new LinkedList<FootballPlayer>(), new LinkedList<Task>()),
                 new Team(new LinkedList<FootballPlayer>(), new LinkedList<Task>()), new Ball());
 
-            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(0, 0), 
+            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(0, 0),
                 "humanplayer", 10, 10, 10, "2d/sprite", "human"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 60),
                 "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
@@ -49,6 +57,7 @@ namespace FootballAIGame
                 "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(360, 60),
                 "attacker", 10, 10, 10, "2d/sprite", "attacker"));
+            SaveMatchHistory(board);
         }
 
         /// <summary>
@@ -63,6 +72,35 @@ namespace FootballAIGame
 
             // TODO: use this.Content to load your game content here
             Globals.keyboard = new McKeyboard();
+        }
+
+        public async void SaveMatchHistory(ScoreBoard gameBoard)
+        {
+            //Now score is set here, needs to be set when the game is finished
+            gameBoard.OutScore = 8;
+            gameBoard.HomeScore = 88;
+            string json = JsonConvert.SerializeObject(gameBoard);
+            String JSONtxt = File.ReadAllText(ApplicationData.Current.LocalFolder.Path + "/ScoreBoard.json");
+            List<ScoreBoard> boards = JsonConvert.DeserializeObject<List<ScoreBoard>>(JSONtxt);
+            boards.Add(gameBoard);
+            string outputJSON = Newtonsoft.Json.JsonConvert.SerializeObject(boards, Newtonsoft.Json.Formatting.Indented);
+            string jsonBoards = JsonConvert.SerializeObject(boards, Formatting.Indented);
+            var item = await ApplicationData.Current.LocalFolder.TryGetItemAsync("ScoreBoard.json");
+
+            if (item != null)
+            {
+                var file = await ApplicationData.Current.LocalFolder.GetFileAsync("ScoreBoard.json");
+                await FileIO.WriteTextAsync(file, outputJSON + Environment.NewLine);
+            }
+            else
+            {
+                var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("ScoreBoard.json");
+                await FileIO.WriteTextAsync(file, json);
+            }
+
+
+
+
         }
 
         /// <summary>
