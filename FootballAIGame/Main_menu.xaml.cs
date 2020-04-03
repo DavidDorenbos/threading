@@ -23,11 +23,11 @@ namespace FootballAIGame
     /// </summary>
     public sealed partial class Main_menu : Page
     {
-        private string money = "50";
+        Currency currency = new Currency();
         public Main_menu()
         {
             this.InitializeComponent();
-            money_bar.Text = money;
+            money_bar.Text = currency.getCurrency().ToString();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

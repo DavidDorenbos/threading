@@ -21,11 +21,13 @@ namespace FootballAIGame
     public sealed partial class TeamManager : Page
     {
         TeamManagement manager;
+        Currency currency = new Currency();
         public TeamManager()
         {
             this.InitializeComponent();
             manager = new TeamManagement();
             LoadMatchHistory();
+            money_bar.Text = currency.getCurrency().ToString();
         }
         public void LoadMatchHistory()
         {
@@ -42,6 +44,11 @@ namespace FootballAIGame
             }
 
             StudentsList.ItemsSource = observableScoreBoards;
+        }
+
+        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Main_menu));
         }
     }
 }

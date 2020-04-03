@@ -22,9 +22,11 @@ namespace FootballAIGame
     /// </summary>
     public sealed partial class Shop : Page
     {
+        Currency currency = new Currency();
         public Shop()
         {
             this.InitializeComponent();
+            money_bar.Text = currency.getCurrency().ToString();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
