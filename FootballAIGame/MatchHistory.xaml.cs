@@ -40,33 +40,17 @@ namespace FootballAIGame
             String JSONtxt = File.ReadAllText(ApplicationData.Current.LocalFolder.Path + "/ScoreBoard.json");
             List<ScoreBoard> boards = JsonConvert.DeserializeObject<List<ScoreBoard>>(JSONtxt);
 
-
-<<<<<<< Updated upstream
             ObservableCollection<ScoreBoard> observableScoreBoards = new ObservableCollection<ScoreBoard>();
 
             foreach (ScoreBoard board in boards)
             {
                 observableScoreBoards.Add(board);
-=======
-                ObservableCollection<ScoreBoard> observableScoreBoards = new ObservableCollection<ScoreBoard>();
-                foreach (ScoreBoard board in boards)
-                {
-                    observableScoreBoards.Add(board);
-                }
+            }
       
-                
-                
-
                 // Create a new ListView (or GridView) for the UI, add content by setting ItemsSource
                 ListView ContactsLV = new ListView();
                 MatchHistoryList.ItemsSource = observableScoreBoards;
->>>>>>> Stashed changes
             }
-
-            // Create a new ListView (or GridView) for the UI, add content by setting ItemsSource
-            ListView ContactsLV = new ListView();
-            StudentsList.ItemsSource = observableScoreBoards;
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

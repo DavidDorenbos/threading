@@ -32,9 +32,9 @@
                             <ColumnDefinition Width="530"/>
                             <ColumnDefinition Width="494"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Name="numberRow" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="Number" />
-                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="Result" />
-                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding HomeScore}" />
+                        <TextBlock Name="numberRow" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding HomeScore}" />
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding OutScore}" />
+                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding Path=money}" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
