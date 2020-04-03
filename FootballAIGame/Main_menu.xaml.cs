@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FootballAIGame.Source;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace FootballAIGame
         public Main_menu()
         {
             this.InitializeComponent();
-            money_bar.Text = money; 
+            money_bar.Text = money;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -36,7 +37,7 @@ namespace FootballAIGame
 
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(GamePage));
+            Frame.Navigate(typeof(TeamManager));
         }
 
         private void Button_Click2(object sender, RoutedEventArgs e)

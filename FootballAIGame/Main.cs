@@ -6,9 +6,11 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using System.Threading;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using System;
+using System.Diagnostics;
 
 namespace FootballAIGame
 {
@@ -39,24 +41,36 @@ namespace FootballAIGame
         {
             // TODO: Add your initialization logic here
             base.Initialize();
-            playerDims = new Vector2(48, 48);
+            playerDims = new Vector2(60, 60);
 
             graphics.PreferredBackBufferWidth = 1000;
             graphics.PreferredBackBufferHeight = 500;
 
             graphics.ApplyChanges();
 
-            this.field = new Field(new Team(new LinkedList<FootballPlayer>(), new LinkedList<Task>()),
-                new Team(new LinkedList<FootballPlayer>(), new LinkedList<Task>()), new Ball());
+            this.field = new Field(new Team(new LinkedList<FootballPlayer>()), 
+                new Team(new LinkedList<FootballPlayer>()), new Ball());
 
-            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(0, 0),
-                "humanplayer", 10, 10, 10, "2d/sprite", "human"));
+            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(60, 60), 
+
+                "Frits", 10, 10, 10, "2d/sprite", "human"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 60),
-                "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
+                "Jan", 10, 10, 10, "2d/sprite", "midfielder"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 500),
-                "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
+                "Pieter", 10, 10, 10, "2d/sprite", "midfielder"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(360, 60),
+
+                "Kees", 10, 10, 10, "2d/sprite", "attacker"));
+
+ 
+
+            field.teamOut.players.AddLast(new FootballPlayer(playerDims, new Vector2(600, 400),
                 "attacker", 10, 10, 10, "2d/sprite", "attacker"));
+
+
+
+            field.InitiateTasks();
+
             SaveMatchHistory(board);
         }
 
@@ -76,31 +90,45 @@ namespace FootballAIGame
 
         public async void SaveMatchHistory(ScoreBoard gameBoard)
         {
-            //Now score is set here, needs to be set when the game is finished
-            gameBoard.OutScore = 8;
-            gameBoard.HomeScore = 88;
-            string json = JsonConvert.SerializeObject(gameBoard);
-            String JSONtxt = File.ReadAllText(ApplicationData.Current.LocalFolder.Path + "/ScoreBoard.json");
-            List<ScoreBoard> boards = JsonConvert.DeserializeObject<List<ScoreBoard>>(JSONtxt);
+            List<ScoreBoard> boards = new List<ScoreBoard>();
+            boards.Add(gameBoard);
             boards.Add(gameBoard);
             string outputJSON = Newtonsoft.Json.JsonConvert.SerializeObject(boards, Newtonsoft.Json.Formatting.Indented);
-            string jsonBoards = JsonConvert.SerializeObject(boards, Formatting.Indented);
+
             var item = await ApplicationData.Current.LocalFolder.TryGetItemAsync("ScoreBoard.json");
 
             if (item != null)
             {
+                String JSONtxt = File.ReadAllText(ApplicationData.Current.LocalFolder.Path + "/ScoreBoard.json");
+                boards = JsonConvert.DeserializeObject<List<ScoreBoard>>(JSONtxt);
+                boards.Add(gameBoard);
+                string jsonBoards = JsonConvert.SerializeObject(boards, Formatting.Indented);
+
+               // string outputJSONN = Newtonsoft.Json.JsonConvert.SerializeObject(boards, Newtonsoft.Json.Formatting.Indented);
                 var file = await ApplicationData.Current.LocalFolder.GetFileAsync("ScoreBoard.json");
-                await FileIO.WriteTextAsync(file, outputJSON + Environment.NewLine);
+                await FileIO.WriteTextAsync(file, jsonBoards + Environment.NewLine);
             }
             else
             {
                 var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("ScoreBoard.json");
-                await FileIO.WriteTextAsync(file, json);
+                await FileIO.WriteTextAsync(file, outputJSON);
             }
 
 
 
+        }
 
+        private void Goal() {
+            if(Globals.ball.pos.Y > 250-70 && Globals.ball.pos.Y < 250 + 70) {
+                if(Globals.ball.pos.X <= 50) {
+                    board.OutScore += 1;
+                    Debug.WriteLine("Score: Home{0},  Out{1}", board.HomeScore, board.OutScore);
+                }
+                else if(Globals.ball.pos.X >= 950) {
+                    board.HomeScore += 1;
+                    Debug.WriteLine("Score: Home{0},  Out{1}", board.HomeScore, board.OutScore);
+                }
+            }
         }
 
         /// <summary>
@@ -123,7 +151,9 @@ namespace FootballAIGame
             Globals.keyboard.Update();
             field.Update();
             Globals.keyboard.UpdateOld();
+            Goal();
             base.Update(gameTime);
+            
         }
 
         /// <summary>
