@@ -8,8 +8,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <ListView Name="StudentsList">
+    <Canvas>
+        <ListView Name="TeamList">
             <ListView.HeaderTemplate>
                 <DataTemplate>
                     <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">
@@ -17,10 +17,12 @@
                             <ColumnDefinition Width="408"/>
                             <ColumnDefinition Width="360"/>
                             <ColumnDefinition Width="360"/>
+                            <ColumnDefinition Width="300"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Home team" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                        <TextBlock Grid.Column="1" Text="Out team" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                        <TextBlock Grid.Column="2" Text="Currency" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                        <TextBlock Grid.Column="0" Text="Name" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                        <TextBlock Grid.Column="1" Text="Role" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                        <TextBlock Grid.Column="2" Text="Speed" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                        <TextBlock Grid.Column="3" Text="Strength" Style="{ThemeResource CaptionTextBlockStyle}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.HeaderTemplate>
@@ -28,17 +30,20 @@
                 <DataTemplate>
                     <Grid Height="48" AutomationProperties.Name="">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="48"/>
+                            <ColumnDefinition Width="408"/>
                             <ColumnDefinition Width="360"/>
                             <ColumnDefinition Width="360"/>
-                            <ColumnDefinition Width="360"/>
+                            <ColumnDefinition Width="300"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding name}" />
-                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{Binding speed}"/>
-                        <TextBlock Grid.Column="3" VerticalAlignment="Center" Text="{Binding strength}"/>
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding NamePropertyBinding}" />
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding PlayerTypePropertyBinding}"/>
+                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{Binding SpeedPropertyBinding}"/>
+                        <TextBlock Grid.Column="3" VerticalAlignment="Center" Text="{Binding StrengthPropertyBinding}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        </Grid>
+
+
+    </Canvas>
 </Page>

@@ -26,34 +26,37 @@ namespace FootballAIGame
     /// </summary>
     public sealed partial class MatchHistory : Page
     {
+        private string money = "50";
+        private int number = 0;
         public MatchHistory()
         {
             this.InitializeComponent();
             LoadMatchHistory();
+            money_bar.Text = money;
         }
         public async void LoadMatchHistory()
         {
             var item = await ApplicationData.Current.LocalFolder.TryGetItemAsync("ScoreBoard.json");
 
+            ObservableCollection<ScoreBoard> observableScoreBoards = new ObservableCollection<ScoreBoard>();
             if (item != null)
             {
                 String JSONtxt = File.ReadAllText(ApplicationData.Current.LocalFolder.Path + "/ScoreBoard.json");
                 List<ScoreBoard> boards = JsonConvert.DeserializeObject<List<ScoreBoard>>(JSONtxt);
 
-
-                ObservableCollection<ScoreBoard> observableScoreBoards = new ObservableCollection<ScoreBoard>();
-
                 foreach (ScoreBoard board in boards)
                 {
                     observableScoreBoards.Add(board);
                 }
-
                 // Create a new ListView (or GridView) for the UI, add content by setting ItemsSource
                 ListView ContactsLV = new ListView();
-                StudentsList.ItemsSource = observableScoreBoards;
+                MatchHistoryList.ItemsSource = observableScoreBoards;
             }
-
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Main_menu));
+        }
     }
 }

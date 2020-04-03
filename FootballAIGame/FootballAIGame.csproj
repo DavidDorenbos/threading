@@ -117,6 +117,9 @@
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Shop.xaml.cs">
+      <DependentUpon>Shop.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\Engine\Ball.cs" />
     <Compile Include="Source\Engine\FootballTypes.cs" />
     <Compile Include="Source\Engine\FootballPlayer.cs" />
@@ -132,6 +135,7 @@
     <Compile Include="TeamManager.xaml.cs">
       <DependentUpon>TeamManager.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -184,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Shop.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

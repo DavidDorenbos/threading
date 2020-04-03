@@ -1,21 +1,8 @@
 ﻿using FootballAIGame.Source;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Storage;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,12 +16,19 @@ namespace FootballAIGame
         TeamManagement manager;
         public TeamManager()
         {
+            this.InitializeComponent();
             manager = new TeamManagement();
             LoadMatchHistory();
         }
         public void LoadMatchHistory()
         {
-      
+            List<FootballPlayer> boards = manager.OwnedPlayers;
+            ObservableCollection<FootballPlayer> observableScoreBoards = new ObservableCollection<FootballPlayer>();
+            foreach (FootballPlayer board in boards)
+            {
+                observableScoreBoards.Add(board);
+            }
+            TeamList.ItemsSource = observableScoreBoards;
         }
     }
 }

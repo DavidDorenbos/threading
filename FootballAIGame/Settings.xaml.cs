@@ -24,18 +24,33 @@ namespace FootballAIGame
 
     public sealed partial class Settings : Page
     {
-        ObservableCollection<TimeSpan> times = new ObservableCollection<TimeSpan>();
         public Settings()
         {
             this.InitializeComponent();
-            times.Add(new TimeSpan(3));
-            times.Add(new TimeSpan(5));
-            times.Add(new TimeSpan(10));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Main_menu));
+        }
+
+        private void PlayTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string time = e.AddedItems[0].ToString();
+            string selectedtime = "0";
+            switch(time)
+            {
+                case "3 minuten":
+                    selectedtime = "3";
+                    break;
+                case "5 minuten":
+                    selectedtime = "5";
+                    break;
+                case "10 minuten":
+                    selectedtime = "10";
+                    break;
+            }
+            string playtime = selectedtime;
         }
     }
 }

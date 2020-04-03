@@ -1,14 +1,9 @@
-﻿using FootballAIGame.Source;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Framework;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
-using System.Threading;
 using Windows.Storage;
-using Windows.Storage.Pickers;
 using System;
 using System.Diagnostics;
 
@@ -29,6 +24,7 @@ namespace FootballAIGame
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             board = new ScoreBoard();
+
         }
 
         /// <summary>
@@ -84,6 +80,7 @@ namespace FootballAIGame
             field.teamOut.setTeam();
             field.teamOut.scoreLocation = new Vector2(50, 250);
             field.teamHome.scoreLocation = new Vector2(950, 250);
+
 
             field.InitiateTasks();
 
@@ -172,8 +169,7 @@ namespace FootballAIGame
             field.Update();
             Globals.keyboard.UpdateOld();
             Goal();
-            base.Update(gameTime);
-            
+            base.Update(gameTime);  
         }
 
         /// <summary>
