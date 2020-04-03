@@ -152,8 +152,7 @@ namespace FootballAIGame
             field.Update();
             Globals.keyboard.UpdateOld();
             Goal();
-            base.Update(gameTime);
-            
+            base.Update(gameTime);  
         }
 
         /// <summary>

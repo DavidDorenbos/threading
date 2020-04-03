@@ -28,6 +28,8 @@ namespace FootballAIGame {
         private Texture2D goal;
         private Dictionary<string, Node> tasks = new Dictionary<string, Node>();
         public ScoreBoard scoreBoard;
+        public UI ui;
+        public int numScore;
         //public Field() {
         //players = new LinkedList<FootballPlayer>();
         //players.AddFirst(new FootballPlayer("2d/sprite", new Vector2(300, 300), new Vector2(48, 48)));
@@ -36,11 +38,13 @@ namespace FootballAIGame {
 
         public Field(Team teamHome, Team teamOut, Ball ball)
         {
+            numScore = 0;
             this.teamHome = teamHome;
             this.teamOut = teamOut;
             this.ball = ball;
             _debug();
             goal = Globals.content.Load<Texture2D>("2d/Goal");
+            ui = new UI();
         }
         public LinkedList<FootballPlayer> AllPlayers() {
             LinkedList<FootballPlayer> players = new LinkedList<FootballPlayer>();
@@ -81,6 +85,7 @@ namespace FootballAIGame {
             }
             Task.Run(() => { PlayerOnBall(); });
             ball.Update();
+            ui.Update(this);
         }
 
 
@@ -154,6 +159,7 @@ namespace FootballAIGame {
             hasShot();
             drawGoal(new Vector2(25, 250));
             drawGoal(new Vector2(975, 250));
+            ui.Draw(this);
         }
     }
 }

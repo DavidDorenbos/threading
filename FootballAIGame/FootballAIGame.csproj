@@ -132,6 +132,7 @@
     <Compile Include="TeamManager.xaml.cs">
       <DependentUpon>TeamManager.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
