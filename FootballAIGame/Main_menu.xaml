@@ -37,12 +37,8 @@
         </Rectangle>
         <Image Source="ms-appx:///Content/images/football_image.png" Width="144" Height="154" Canvas.Left="698" Canvas.Top="9" FocusVisualSecondaryBrush="#99FFFFFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         <Image Source="ms-appx:///Content/images/coin.png" Height="132" Canvas.Left="1105" Canvas.Top="41" Width="140"/>
-<<<<<<< Updated upstream
         <TextBlock Name="money_bar" Canvas.Left="1258" Canvas.Top="64" Text="100" TextWrapping="Wrap" FontSize="100" Margin="0,0,0,0" Width="168"/>
 
-=======
-        <TextBox Name="money_bar" Canvas.Left="1257" Canvas.Top="55" Text="100" TextWrapping="Wrap" Height="109" Width="162" FontSize="80" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}"/>
->>>>>>> Stashed changes
     </Canvas>
 
 </Page>

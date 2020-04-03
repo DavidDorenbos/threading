@@ -20,7 +20,6 @@
             <ComboBoxItem Name="item5" Content="5 Minuten" FontSize="50"/>
             <ComboBoxItem Name="item10" Content="10 Minuten" FontSize="50"/>
         </ComboBox>
-<<<<<<< Updated upstream
         <Button Content="terug" HorizontalAlignment="Left" Margin="10,886,0,0" VerticalAlignment="Top" Height="104" Width="221" Click="Button_Click" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="{x:Null}" FontFamily="Arial Black" FontWeight="Bold" Background="#FFF3E9E9" ClickMode="Press" Canvas.Left="517" Canvas.Top="207"/>
         <Image Source="ms-appx:///Content/images/football_image.png" HorizontalAlignment="Center" Height="144" Margin="0,0,0,0" VerticalAlignment="Top" Width="170"/>
         <Rectangle HorizontalAlignment="Left" Height="138" Margin="1114,10,0,0" VerticalAlignment="Top" Width="346" FocusVisualPrimaryBrush="White" Canvas.Left="1099" Canvas.Top="30">
@@ -30,9 +29,6 @@
         </Rectangle>
         <Image Source="ms-appx:///Content/images/coin.png" Height="132" Canvas.Left="1105" Canvas.Top="41" Width="140" HorizontalAlignment="Stretch" Margin="1111,16,249,852" VerticalAlignment="Stretch"/>
         <TextBlock Name="money_bar" Canvas.Left="1258" Canvas.Top="64" Text="100" TextWrapping="Wrap" FontSize="100" Margin="1288,16,44,866" Width="168" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-=======
-        <Button Content="Back" HorizontalAlignment="Left" Margin="1269,1,0,0" VerticalAlignment="Top" Height="104" Width="221" Click="Button_Click" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="{x:Null}" FontFamily="Arial Black" FontWeight="Bold" Background="#FFF3E9E9" ClickMode="Press" Canvas.Left="517" Canvas.Top="207"/>
->>>>>>> Stashed changes
 
     </Grid>
 </Page>

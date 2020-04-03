@@ -41,7 +41,7 @@ namespace FootballAIGame
 
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Shop));
+            Frame.Navigate(typeof(GamePage));
         }
 
         private void Button_Click3(object sender, RoutedEventArgs e)

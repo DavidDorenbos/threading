@@ -26,13 +26,14 @@ namespace FootballAIGame
     /// </summary>
     public sealed partial class MatchHistory : Page
     {
-        private string money = "50";
-        private int number = 0;
         public MatchHistory()
         {
             this.InitializeComponent();
+
+
             LoadMatchHistory();
-            money_bar.Text = money;
+
+
         }
 
         public void LoadMatchHistory()
@@ -41,26 +42,11 @@ namespace FootballAIGame
             List<ScoreBoard> boards = JsonConvert.DeserializeObject<List<ScoreBoard>>(JSONtxt);
 
 
-<<<<<<< Updated upstream
             ObservableCollection<ScoreBoard> observableScoreBoards = new ObservableCollection<ScoreBoard>();
 
             foreach (ScoreBoard board in boards)
             {
                 observableScoreBoards.Add(board);
-=======
-                ObservableCollection<ScoreBoard> observableScoreBoards = new ObservableCollection<ScoreBoard>();
-                foreach (ScoreBoard board in boards)
-                {
-                    observableScoreBoards.Add(board);
-                }
-      
-                
-                
-
-                // Create a new ListView (or GridView) for the UI, add content by setting ItemsSource
-                ListView ContactsLV = new ListView();
-                MatchHistoryList.ItemsSource = observableScoreBoards;
->>>>>>> Stashed changes
             }
 
             // Create a new ListView (or GridView) for the UI, add content by setting ItemsSource
@@ -68,9 +54,5 @@ namespace FootballAIGame
             StudentsList.ItemsSource = observableScoreBoards;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Main_menu));
-        }
     }
 }
