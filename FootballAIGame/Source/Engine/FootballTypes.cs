@@ -14,6 +14,9 @@ namespace FootballAIGame
 
         public static void AttackerAI(FootballPlayer player) {
             player.pos = player.move(player.pos);
+            player.direction = Globals.RotateTowards(player.pos, Globals.ball.pos) / (float)Math.PI / 2 * 360;
+            player.AddDirection(2);
+            
         }
 
         public static void MidfielderAI(FootballPlayer player) {

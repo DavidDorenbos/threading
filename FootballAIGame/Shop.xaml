@@ -23,22 +23,23 @@
         <TextBox Name="money_bar" Canvas.Left="1257" Canvas.Top="55" Text="100" TextWrapping="Wrap" Height="109" Width="162" FontSize="80" Margin="1292,51,0,840" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left"/>
         <TextBlock HorizontalAlignment="Left" Margin="134,31,0,0" Text="Shop" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="72" FontFamily="Arial Black" FontWeight="Bold" Canvas.Left="15" Canvas.Top="33"/>
         <Image Source="ms-appx:///Content/images/football_image.png" Width="144" Height="154" Canvas.Left="666" Canvas.Top="2" FocusVisualSecondaryBrush="#99FFFFFF" RenderTransformOrigin="0.476,0.448" Margin="678,26,678,820" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <ListView Name="StudentsList" Canvas.Left="6" Canvas.Top="301" Background="#FFF3E9E9" Margin="4,376,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <ListView Name="TransList" Canvas.Left="6" Canvas.Top="301" Background="#FFF3E9E9" Margin="4,376,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <ListView.HeaderTemplate>
                 <DataTemplate>
                     <Grid Background="{ThemeResource SystemBaseLowColor}" Height="50">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="299"/>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Name" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                        <TextBlock Grid.Column="0" Text="Name" Style="{ThemeResource CaptionTextBlockStyle}"/>
                         <TextBlock Grid.Column="1" Text="Role" Style="{ThemeResource CaptionTextBlockStyle}"/>
                         <TextBlock Grid.Column="2" Text="Speed" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                        <TextBlock Grid.Column="3" Text="Strength" Style="{ThemeResource CaptionTextBlockStyle}"/>
-                        <TextBlock Grid.Column="4" Text="Cost" Style="{ThemeResource CaptionTextBlockStyle}" HorizontalAlignment="Stretch" Margin="11.8,12,27.2,12" VerticalAlignment="Stretch"/>
+                        <TextBlock Grid.Column="3" Text="Strength" Style="{ThemeResource CaptionTextBlockStyle}" HorizontalAlignment="Stretch" Margin="11.8,12,27.2,12" VerticalAlignment="Stretch"/>
+                        <TextBlock Grid.Column="4" Text="Price" Style="{ThemeResource CaptionTextBlockStyle}" HorizontalAlignment="Stretch" Margin="11.8,12,27.2,12" VerticalAlignment="Stretch"/>
                     </Grid>
                 </DataTemplate>
             </ListView.HeaderTemplate>
@@ -46,17 +47,18 @@
                 <DataTemplate>
                     <Grid Height="48" AutomationProperties.Name="">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="299"/>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="250"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="Number" />
-                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="Result" />
-                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding HomeScore}" />
-                        <TextBlock Grid.Column="3" VerticalAlignment="Center" Text="{Binding OutScore}"/>
-                        <TextBlock Grid.Column="4" VerticalAlignment="Center" Text="{Binding ReleaseDateTime}"/>
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding NamePropertyBinding}" />
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding PlayerTypePropertyBinding}" />
+                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="{Binding SpeedPropertyBinding}"/>
+                        <TextBlock Grid.Column="3" VerticalAlignment="Center" Text="{Binding StrengthPropertyBinding}"/>
+                        <TextBlock Grid.Column="4" VerticalAlignment="Center" Text="{Binding PricePropertyBinding}"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

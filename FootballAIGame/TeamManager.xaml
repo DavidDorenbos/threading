@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
     <Canvas Background="Black">
         <Rectangle HorizontalAlignment="Left" Height="148" Margin="0,0,0,0" VerticalAlignment="Top" Width="532">
             <Rectangle.Fill>
@@ -24,7 +23,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" Text="Manage Team" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="72" FontFamily="Arial Black" FontWeight="Bold" Canvas.Left="15" Canvas.Top="33"/>
         <Button Content="Back" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="104" Width="221" Click="Button_Click" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="{x:Null}" FontFamily="Arial Black" FontWeight="Bold" Background="#FFF3E9E9" ClickMode="Press" Canvas.Left="21" Canvas.Top="169"/>
         <Image Source="ms-appx:///Content/images/football_image.png" Width="144" Height="154" Canvas.Left="666" Canvas.Top="2" FocusVisualSecondaryBrush="#99FFFFFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <ListView Name="StudentsList" Canvas.Left="2" Canvas.Top="296" Height="701" Margin="0,0,0,0" Width="1496" Background="#FFF3E9E9">
+        <ListView Name="TeamList" Canvas.Left="2" Canvas.Top="296" Height="701" Margin="0,0,0,0" Width="1496" Background="#FFF3E9E9">
             <ListView.HeaderTemplate>
                 <DataTemplate>
                     <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">
