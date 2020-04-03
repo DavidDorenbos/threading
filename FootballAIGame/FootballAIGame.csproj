@@ -127,7 +127,7 @@
     <Compile Include="Source\Engine\Node.cs" />
     <Compile Include="Source\Engine\Team.cs" />
     <Compile Include="Source\Engine\Timer.cs" />
-    <Compile Include="Source\ScoreBoard.cs" />
+    <Compile Include="Source\Engine\ScoreBoard.cs" />
     <Compile Include="Source\TeamManagement.cs" />
     <Compile Include="TeamManager.xaml.cs">
       <DependentUpon>TeamManager.xaml</DependentUpon>

@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Diagnostics;
 
 
 
@@ -16,7 +15,7 @@ namespace FootballAIGame
         public Vector2 pos;
         private Vector2 dims;
         public Texture2D mySprite;
-        public static float playerDistance = 5f;
+        public static float playerDistance = 8f;
         public bool taken;
         public bool shot;
         public float shotSpeed;
@@ -100,7 +99,6 @@ namespace FootballAIGame
             
             if (Globals.OutOfBounds(pos) && !bounceBool)
             {
-                Debug.WriteLine("The old direction = {0}", direction);
                 bounceBool = true;
                 if(pos.Y <= Globals.top) {
                     if(direction <= 180){
@@ -136,7 +134,6 @@ namespace FootballAIGame
                 {
                     direction += 360;
                 }
-                Debug.WriteLine("The new direction = {0}", direction);
                 return true;
             }
             bounceBool = false;
