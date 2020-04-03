@@ -20,38 +20,16 @@ namespace FootballAIGame
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Main_menu : Page
+    public sealed partial class Shop : Page
     {
-        private string money = "50";
-        public Main_menu()
+        public Shop()
         {
             this.InitializeComponent();
-            money_bar.Text = money; 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(GamePage));
-        }
-
-        private void Button_Click1(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(GamePage));
-        }
-
-        private void Button_Click2(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Shop));
-        }
-
-        private void Button_Click3(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(MatchHistory));
-        }
-
-        private void Button_Click4(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Settings));
+            Frame.Navigate(typeof(Main_menu));
         }
     }
 }
