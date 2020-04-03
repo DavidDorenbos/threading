@@ -21,9 +21,9 @@ namespace FootballAIGame
 
         public void Draw(Field field)
         {
-            string tempStr = "Scored" + field.scoreBoard.HomeScore;
+            string tempStr = "ScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScored";
             Vector2 strDims = font.MeasureString(tempStr);
-            Globals.spriteBatch.DrawString(font, tempStr, new Vector2(Globals.screenWidth/2 - strDims.X/2, Globals.screenHeight - 40), Color.Black);
+            Globals.spriteBatch.DrawString(font, tempStr, new Vector2(Globals.screenWidth * 2 - strDims.X*2, Globals.screenHeight), Color.Green);
         }
     }
 }
