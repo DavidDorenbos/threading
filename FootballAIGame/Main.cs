@@ -1,14 +1,9 @@
-﻿using FootballAIGame.Source;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGame.Framework;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
-using System.Threading;
 using Windows.Storage;
-using Windows.Storage.Pickers;
 using System;
 using System.Diagnostics;
 
@@ -52,23 +47,15 @@ namespace FootballAIGame
                 new Team(new LinkedList<FootballPlayer>()), new Ball());
 
             field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(60, 60), 
-
                 "Frits", 10, 10, 10, "2d/sprite", "human"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 60),
                 "Jan", 10, 10, 10, "2d/sprite", "midfielder"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 500),
-
                 "Pieter", 10, 10, 10, "2d/sprite", "midfielder"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(360, 60),
-
                 "Kees", 10, 10, 10, "2d/sprite", "attacker"));
-
- 
-
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(360, 100),
                 "attacker", 10, 10, 10, "2d/sprite", "attacker"));
-
-
             field.teamOut.players.AddLast(new FootballPlayer(playerDims, new Vector2(600, 400),
                 "attacker", 10, 10, 10, "2d/sprite", "attacker"));
 
@@ -118,9 +105,6 @@ namespace FootballAIGame
                 var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("ScoreBoard.json");
                 await FileIO.WriteTextAsync(file, outputJSON);
             }
-
-
-
         }
 
         private void Goal() {

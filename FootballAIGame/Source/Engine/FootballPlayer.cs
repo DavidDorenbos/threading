@@ -41,6 +41,7 @@ namespace FootballAIGame
         public string PlayerTypePropertyBinding { get; set; }
         public int SpeedPropertyBinding { get; set; }
         public int StrengthPropertyBinding { get; set; }
+        public int PricePropertyBinding { get; set; }
 
         public FootballPlayer(Vector2 dims, Vector2 pos, string name, int speed,
             int strength, int price, string path, string playerType) {
@@ -62,6 +63,7 @@ namespace FootballAIGame
             this.PlayerTypePropertyBinding = playerType;
             this.SpeedPropertyBinding = speed;
             this.StrengthPropertyBinding = speed;
+            this.PricePropertyBinding = price;
 
 
             startLocation = new Vector2(pos.X, pos.Y);
