@@ -35,9 +35,9 @@
                 <AcrylicBrush/>
             </Rectangle.Fill>
         </Rectangle>
-        <Image Source="ms-appx:///Content/images/football_image.png" Width="144" Height="154" Canvas.Left="666" Canvas.Top="15" FocusVisualSecondaryBrush="#99FFFFFF"/>
+        <Image Source="ms-appx:///Content/images/football_image.png" Width="144" Height="154" Canvas.Left="698" Canvas.Top="9" FocusVisualSecondaryBrush="#99FFFFFF" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         <Image Source="ms-appx:///Content/images/coin.png" Height="132" Canvas.Left="1105" Canvas.Top="41" Width="140"/>
-        <TextBox Name="money_bar" Canvas.Left="1257" Canvas.Top="55" Text="100" TextWrapping="Wrap" Height="109" Width="162" FontSize="80" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBox Name="money_bar" Canvas.Left="1257" Canvas.Top="55" Text="100" TextWrapping="Wrap" Height="109" Width="162" FontSize="80" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}"/>
     </Canvas>
 
 </Page>

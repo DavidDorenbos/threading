@@ -15,12 +15,20 @@
             </Rectangle.Fill>
         </Rectangle>
         <TextBlock HorizontalAlignment="Left" Margin="61,30,0,0" Text="Settings" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="72" FontFamily="Arial Black" FontWeight="Bold"/>
-        <ComboBox x:Name="PlayTime" HorizontalAlignment="Center" Margin="0,300,0,0" VerticalAlignment="Top" DisplayMemberPath="Source" Header="Times" Height="200" Width="500" SelectedIndex="0" FontSize="50" BorderBrush="#66F3E0E0" Background="#66FFFFFF" RequestedTheme="Light">
-            <ComboBoxItem Content="3 Minuten" FontSize="50"/>
-            <ComboBoxItem Content="5 Minuten" FontSize="50"/>
-            <ComboBoxItem Content="10 Minuten" FontSize="50"/>
+        <ComboBox x:Name="PlayTime" HorizontalAlignment="Center" Margin="0,300,0,0" VerticalAlignment="Top" DisplayMemberPath="Source" Header="Times" Height="200" Width="500" SelectedIndex="0" FontSize="50" BorderBrush="#66F3E0E0" Background="#66FFFFFF" RequestedTheme="Light" SelectionChanged="PlayTime_SelectionChanged">
+            <ComboBoxItem Name="item3" Content="3 Minuten" FontSize="50"/>
+            <ComboBoxItem Name="item5" Content="5 Minuten" FontSize="50"/>
+            <ComboBoxItem Name="item10" Content="10 Minuten" FontSize="50"/>
         </ComboBox>
-        <Button Content="terug" HorizontalAlignment="Left" Margin="1269,1,0,0" VerticalAlignment="Top" Height="104" Width="221" Click="Button_Click" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="{x:Null}" FontFamily="Arial Black" FontWeight="Bold" Background="#FFF3E9E9" ClickMode="Press" Canvas.Left="517" Canvas.Top="207"/>
+        <Button Content="Back" HorizontalAlignment="Left" Margin="10,886,0,0" VerticalAlignment="Top" Height="104" Width="221" Click="Button_Click" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="{x:Null}" FontFamily="Arial Black" FontWeight="Bold" Background="#FFF3E9E9" ClickMode="Press" Canvas.Left="517" Canvas.Top="207"/>
+        <Image Source="ms-appx:///Content/images/football_image.png" HorizontalAlignment="Center" Height="144" Margin="0,0,0,0" VerticalAlignment="Top" Width="170"/>
+        <Rectangle HorizontalAlignment="Left" Height="138" Margin="1114,10,0,0" VerticalAlignment="Top" Width="346" FocusVisualPrimaryBrush="White" Canvas.Left="1099" Canvas.Top="30">
+            <Rectangle.Fill>
+                <AcrylicBrush/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Image Source="ms-appx:///Content/images/coin.png" Height="132" Canvas.Left="1105" Canvas.Top="41" Width="140" HorizontalAlignment="Stretch" Margin="1111,16,249,852" VerticalAlignment="Stretch"/>
+        <TextBlock Name="money_bar" Canvas.Left="1258" Canvas.Top="64" Text="100" TextWrapping="Wrap" FontSize="100" Margin="1288,16,44,866" Width="168" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
     </Grid>
 </Page>
