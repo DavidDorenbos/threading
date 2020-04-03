@@ -13,6 +13,7 @@ namespace FootballAIGame
     public class Ball
     {
         public Vector2 pos;
+        public Vector2 startLocation;
         private Vector2 dims;
         public Texture2D mySprite;
         public static float playerDistance = 8f;
@@ -29,7 +30,7 @@ namespace FootballAIGame
             taken = false;
             shotSpeed = 0f;
             bounceBool = false;
-            
+            startLocation = new Vector2(pos.X, pos.Y);
         }
         public void Shoot(float direction) {
             if (taken){

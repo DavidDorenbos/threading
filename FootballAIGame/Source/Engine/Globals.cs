@@ -33,7 +33,6 @@ namespace FootballAIGame {
         }
         public static float RotateTowards(Vector2 Pos, Vector2 focus)
         {
-
             float h, sineTheta, angle;
             if (Pos.Y - focus.Y != 0)
             {
@@ -84,8 +83,39 @@ namespace FootballAIGame {
             {
                 angle = (float)Math.PI;
             }
-
             return angle;
+        }
+        public static void AI(FootballPlayer player)
+        {
+            if (!player.hasBall)
+            {
+                if (Globals.ball.GetDistance(player.pos) < 200f && player.hadDistance) {
+                    player.direction = Globals.RotateTowards(player.pos, Globals.ball.pos) / (float)Math.PI / 2 * 360;
+                    player.pos = player.move(player.pos);
+                    player.pos = player.move(player.pos);
+                }
+                else if (Globals.ball.GetDistance(player.pos) < 100f && !player.hadDistance) {
+                    player.direction = (Globals.RotateTowards(player.pos, Globals.ball.pos) / (float)Math.PI / 2 * 360) + 180;
+                    player.pos = player.move(player.pos);
+                    player.pos = player.move(player.pos);
+                }
+                else if (Globals.ball.GetDistance(player.pos) > 200f) {
+                    if (player.GetDistanceFromStart() < 2.0f) {
+                        player.direction = Globals.RotateTowards(player.pos, Globals.ball.pos) / (float)Math.PI / 2 * 360;
+                    }
+                    else {
+                        player.direction = Globals.RotateTowards(player.pos, player.startLocation) / (float)Math.PI / 2 * 360;
+                        player.pos = player.move(player.pos);
+                        player.pos = player.move(player.pos);
+                    }
+                }
+            }
+            else
+            {
+                player.direction = Globals.RotateTowards(player.pos, player.scoreLocation()) / (float)Math.PI / 2 * 360;
+                player.Shoot(player);
+            }
+
         }
     }
 

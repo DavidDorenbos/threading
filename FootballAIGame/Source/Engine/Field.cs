@@ -17,7 +17,6 @@ using FootballAIGame.Source;
 using Windows.UI.Xaml;
 #endregion
 
-//TODO: add debug key ;
 namespace FootballAIGame {
 
     public class Field {
@@ -28,11 +27,6 @@ namespace FootballAIGame {
         private Texture2D goal;
         private Dictionary<string, Node> tasks = new Dictionary<string, Node>();
         public ScoreBoard scoreBoard;
-        //public Field() {
-        //players = new LinkedList<FootballPlayer>();
-        //players.AddFirst(new FootballPlayer("2d/sprite", new Vector2(300, 300), new Vector2(48, 48)));
-        //}
-
 
         public Field(Team teamHome, Team teamOut, Ball ball)
         {
@@ -124,13 +118,11 @@ namespace FootballAIGame {
         private void hasShot()
         {
             if (Globals.ball.shot) {
-                foreach(FootballPlayer player in teamHome.players)
-                {
+                foreach(FootballPlayer player in teamHome.players) {
                     player.hasBall = false;
                     player.hadDistance = true;
                 }
-                foreach(FootballPlayer player in teamOut.players)
-                {
+                foreach(FootballPlayer player in teamOut.players) {
                     player.hasBall = false;
                     player.hadDistance = true;
                 }

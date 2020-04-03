@@ -35,6 +35,7 @@ namespace FootballAIGame
         public bool hasBall;
         public bool hadDistance;
         public bool moving;
+        public Team team { get; set; }
         
 
 
@@ -95,15 +96,26 @@ namespace FootballAIGame
             return Globals.OutOfBounds(new Vector2(pos.X + x, pos.Y + y)) ? pos : new Vector2(pos.X + x, pos.Y + y);
         }
 
+        public Vector2 scoreLocation()
+        {
+            return team.scoreLocation;
+        }
+
         public void AddDirection(float amount) {
             direction = direction + amount;
             if(direction < 0) {
-                direction = 358;
+                direction = 360 - direction;
             }
             else if(direction > 360) {
-                direction = 2;
+                direction = direction - 360;
             }
         }
+
+        public float GetDistanceFromStart()
+        {
+            return (float)Math.Sqrt(Math.Pow(startLocation.X - pos.X, 2) + Math.Pow(startLocation.Y - pos.Y, 2));
+        }
+
 
         public void setHadDistance()
         {
@@ -146,7 +158,6 @@ namespace FootballAIGame
         public void Draw() {
             mySprite = Globals.content.Load<Texture2D>(path);
             if (mySprite != null) {
-                //these 3 lines are 1 line
                 Globals.spriteBatch.Draw(mySprite, new Rectangle((int)pos.X, (int)pos.Y, (int)dims.X, (int)dims.Y),
                     null, Color.White, direction * (float)Math.PI*2 / 360, new Vector2(mySprite.Bounds.Width / 2, mySprite.Bounds.Height / 2),
                     new SpriteEffects(), 0);

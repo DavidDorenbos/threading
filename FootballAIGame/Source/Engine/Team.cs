@@ -11,6 +11,7 @@ namespace FootballAIGame {
 
         public LinkedList<FootballPlayer> players { get; set; }
         public bool hasBall = false;
+        public Vector2 scoreLocation { get; set; }
 
         public Team(LinkedList<FootballPlayer> players) {
             this.players = players;
@@ -23,6 +24,13 @@ namespace FootballAIGame {
             }
         }
 
+        public void setTeam()
+        {
+            foreach(FootballPlayer player in players)
+            {
+                player.team = this;
+            }
+        }
         public void Draw() {
             foreach(FootballPlayer player in players) {
                 player.Draw();

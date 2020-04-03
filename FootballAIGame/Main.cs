@@ -50,20 +50,40 @@ namespace FootballAIGame
 
             this.field = new Field(new Team(new LinkedList<FootballPlayer>()), 
                 new Team(new LinkedList<FootballPlayer>()), new Ball());
-
-            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(60, 60), 
-
+            field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(60, 250),
+                "keeper", 10, 10, 10, "2d/sprite", "keeper"));
+            field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(120, 200),
+                "defender", 10, 10, 10, "2d/sprite", "defender"));
+            field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(120, 300),
+                "defender", 10, 10, 10, "2d/sprite", "defender"));
+            field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 100),
+                "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
+            field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 400),
+                "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
+            field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(400, 100),
+                "attacker", 10, 10, 10, "2d/sprite", "attacker"));
+            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(400, 400),
                 "humanplayer", 10, 10, 10, "2d/sprite", "human"));
-            field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 60),
+
+            field.teamOut.players.AddLast(new FootballPlayer(playerDims, new Vector2(1000- 60, 250),
+                "keeper", 10, 10, 10, "2d/sprite", "keeper"));
+            field.teamOut.players.AddLast(new FootballPlayer(playerDims, new Vector2(1000-120, 200),
+                "defender", 10, 10, 10, "2d/sprite", "defender"));
+            field.teamOut.players.AddLast(new FootballPlayer(playerDims, new Vector2(1000-120, 300),
+                "defender", 10, 10, 10, "2d/sprite", "defender"));
+            field.teamOut.players.AddLast(new FootballPlayer(playerDims, new Vector2(1000-200, 100),
                 "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
-            field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 500),
+            field.teamOut.players.AddLast(new FootballPlayer(playerDims, new Vector2(1000-200, 400),
                 "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
-            field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(360, 100),
+            field.teamOut.players.AddLast(new FootballPlayer(playerDims, new Vector2(1000-400, 100),
+                "attacker", 10, 10, 10, "2d/sprite", "attacker"));
+            field.teamOut.players.AddFirst(new FootballPlayer(playerDims, new Vector2(1000-400, 400),
                 "attacker", 10, 10, 10, "2d/sprite", "attacker"));
 
-            field.teamOut.players.AddLast(new FootballPlayer(playerDims, new Vector2(600, 400),
-                "attacker", 10, 10, 10, "2d/sprite", "attacker"));
-
+            field.teamHome.setTeam();
+            field.teamOut.setTeam();
+            field.teamOut.scoreLocation = new Vector2(50, 250);
+            field.teamHome.scoreLocation = new Vector2(950, 250);
 
             field.InitiateTasks();
 
@@ -74,8 +94,7 @@ namespace FootballAIGame
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
-        protected override void LoadContent()
-        {
+        protected override void LoadContent() {
             // Create a new SpriteBatch, which can be used to draw textures.
             Globals.content = this.Content;
             Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -84,8 +103,7 @@ namespace FootballAIGame
             Globals.keyboard = new McKeyboard();
         }
 
-        public async void SaveMatchHistory(ScoreBoard gameBoard)
-        {
+        public async void SaveMatchHistory(ScoreBoard gameBoard) {
             List<ScoreBoard> boards = new List<ScoreBoard>();
             boards.Add(gameBoard);
             boards.Add(gameBoard);
@@ -93,8 +111,7 @@ namespace FootballAIGame
 
             var item = await ApplicationData.Current.LocalFolder.TryGetItemAsync("ScoreBoard.json");
 
-            if (item != null)
-            {
+            if (item != null) {
                 String JSONtxt = File.ReadAllText(ApplicationData.Current.LocalFolder.Path + "/ScoreBoard.json");
                 boards = JsonConvert.DeserializeObject<List<ScoreBoard>>(JSONtxt);
                 boards.Add(gameBoard);
@@ -104,27 +121,34 @@ namespace FootballAIGame
                 var file = await ApplicationData.Current.LocalFolder.GetFileAsync("ScoreBoard.json");
                 await FileIO.WriteTextAsync(file, jsonBoards + Environment.NewLine);
             }
-            else
-            {
+            else {
                 var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("ScoreBoard.json");
                 await FileIO.WriteTextAsync(file, outputJSON);
             }
-
-
-
         }
 
         private void Goal() {
             if(Globals.ball.pos.Y > 250-70 && Globals.ball.pos.Y < 250 + 70) {
                 if(Globals.ball.pos.X <= 50) {
                     board.OutScore += 1;
-                    Debug.WriteLine("Score: Home{0},  Out{1}", board.HomeScore, board.OutScore);
+                    Reset();
                 }
                 else if(Globals.ball.pos.X >= 950) {
                     board.HomeScore += 1;
-                    Debug.WriteLine("Score: Home{0},  Out{1}", board.HomeScore, board.OutScore);
+                    Reset();
                 }
             }
+        }
+
+        private void Reset()
+        {
+            foreach(FootballPlayer player in field.teamOut.players) {
+                player.pos = player.startLocation;
+            }
+            foreach (FootballPlayer player in field.teamHome.players) {
+                player.pos = player.startLocation;
+            }
+            Globals.ball.pos = Globals.ball.startLocation;
         }
 
         /// <summary>
