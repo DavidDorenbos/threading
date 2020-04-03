@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace FootballAIGame
 {
-    class Ball
+    public class Ball
     {
         private Vector2 pos;
         private Vector2 dims;

@@ -18,7 +18,7 @@ using Windows.UI.Xaml;
 
 namespace FootballAIGame {
 
-    class Field {
+    public class Field {
 
         public Team teamHome;
         public Team teamOut;

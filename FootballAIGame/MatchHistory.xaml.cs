@@ -29,13 +29,8 @@ namespace FootballAIGame
         public MatchHistory()
         {
             this.InitializeComponent();
-
-
             LoadMatchHistory();
-
-
         }
-
         public async void LoadMatchHistory()
         {
             var item = await ApplicationData.Current.LocalFolder.TryGetItemAsync("ScoreBoard.json");

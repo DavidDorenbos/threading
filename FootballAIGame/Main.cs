@@ -84,25 +84,25 @@ namespace FootballAIGame
             boards.Add(gameBoard);
             boards.Add(gameBoard);
             string outputJSON = Newtonsoft.Json.JsonConvert.SerializeObject(boards, Newtonsoft.Json.Formatting.Indented);
-            //string jsonBoards = JsonConvert.SerializeObject(boards, Formatting.Indented);
+
             var item = await ApplicationData.Current.LocalFolder.TryGetItemAsync("ScoreBoard.json");
 
             if (item != null)
             {
                 String JSONtxt = File.ReadAllText(ApplicationData.Current.LocalFolder.Path + "/ScoreBoard.json");
                 boards = JsonConvert.DeserializeObject<List<ScoreBoard>>(JSONtxt);
-                
+                boards.Add(gameBoard);
+                string jsonBoards = JsonConvert.SerializeObject(boards, Formatting.Indented);
 
-                //string outputJSON = Newtonsoft.Json.JsonConvert.SerializeObject(boards, Newtonsoft.Json.Formatting.Indented);
+               // string outputJSONN = Newtonsoft.Json.JsonConvert.SerializeObject(boards, Newtonsoft.Json.Formatting.Indented);
                 var file = await ApplicationData.Current.LocalFolder.GetFileAsync("ScoreBoard.json");
-                await FileIO.WriteTextAsync(file, outputJSON + Environment.NewLine);
+                await FileIO.WriteTextAsync(file, jsonBoards + Environment.NewLine);
             }
             else
             {
                 var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("ScoreBoard.json");
                 await FileIO.WriteTextAsync(file, outputJSON);
             }
-
 
 
 

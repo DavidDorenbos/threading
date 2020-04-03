@@ -127,6 +127,10 @@
     <Compile Include="Source\Engine\Team.cs" />
     <Compile Include="Source\Engine\Timer.cs" />
     <Compile Include="Source\ScoreBoard.cs" />
+    <Compile Include="Source\TeamManagement.cs" />
+    <Compile Include="TeamManager.xaml.cs">
+      <DependentUpon>TeamManager.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -176,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TeamManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

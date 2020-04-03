@@ -16,7 +16,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace FootballAIGame
 {
-    class FootballPlayer
+    public class FootballPlayer
     {
         public Vector2 pos;
         public Vector2 dims;
@@ -105,6 +105,7 @@ namespace FootballAIGame
         }
 
         public void Draw() {
+            mySprite = Globals.content.Load<Texture2D>(path);
             if (mySprite != null) {
                 //these 3 lines are 1 line
                 Globals.spriteBatch.Draw(mySprite, new Rectangle((int)pos.X, (int)pos.Y, (int)dims.X, (int)dims.Y),
