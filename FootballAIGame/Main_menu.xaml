@@ -9,23 +9,18 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Canvas Background="Black">
-        <Button Content="Play" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="99" Width="508" Click="Button_Click" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="Orange" FontFamily="Arial Black" FontWeight="Bold" Background="#FFF3E9E9" ClickMode="Press" Canvas.Left="517" Canvas.Top="207" />
-        <Button Content="Manage Team" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="99" Width="508" Click="Button_Click1" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="#99FFFFFF" FontFamily="Arial Black" FontWeight="Bold" Canvas.Left="517" Canvas.Top="356">
+        <Button Content="Play" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="99" Width="508" Click="Button_Click" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="Orange" FontFamily="Arial Black" FontWeight="Bold" Background="#FFF3E9E9" ClickMode="Press" Canvas.Left="508" Canvas.Top="214" />
+        <Button Content="Manage Team" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="99" Width="508" Click="Button_Click1" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="#99FFFFFF" FontFamily="Arial Black" FontWeight="Bold" Canvas.Left="510" Canvas.Top="379">
             <Button.Background>
                 <AcrylicBrush/>
             </Button.Background>
         </Button>
-        <Button Content="Shop" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="99" Width="508" Click="Button_Click2" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="#99FFFFFF" FontFamily="Arial Black" FontWeight="Bold" Canvas.Left="517" Canvas.Top="500">
+        <Button Content="Shop" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="99" Width="508" Click="Button_Click2" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="#99FFFFFF" FontFamily="Arial Black" FontWeight="Bold" Canvas.Left="512" Canvas.Top="541">
             <Button.Background>
                 <AcrylicBrush/>
             </Button.Background>
         </Button>
-        <Button Content="Match history" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="99" Width="508" Click="Button_Click3" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="#99FFFFFF" FontFamily="Arial Black" FontWeight="Bold" Canvas.Left="517" Canvas.Top="646">
-            <Button.Background>
-                <AcrylicBrush/>
-            </Button.Background>
-        </Button>
-        <Button Content="Settings" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="99" Width="508" Click="Button_Click4" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="#99FFFFFF" FontFamily="Arial Black" FontWeight="Bold" Canvas.Left="517" Canvas.Top="791">
+        <Button Content="Match history" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="99" Width="508" Click="Button_Click3" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="#99FFFFFF" FontFamily="Arial Black" FontWeight="Bold" Canvas.Left="515" Canvas.Top="700">
             <Button.Background>
                 <AcrylicBrush/>
             </Button.Background>

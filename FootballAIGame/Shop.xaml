@@ -9,21 +9,23 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Background="Black">
-        <Rectangle HorizontalAlignment="Left" Height="175" Margin="0,0,0,0" VerticalAlignment="Top" Width="398">
+        <Rectangle HorizontalAlignment="Left" Height="175" Margin="966,30,0,0" VerticalAlignment="Top" Width="398" FocusVisualPrimaryBrush="White">
+            <Rectangle.FocusVisualSecondaryBrush>
+                <AcrylicBrush/>
+            </Rectangle.FocusVisualSecondaryBrush>
             <Rectangle.Fill>
                 <AcrylicBrush/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle HorizontalAlignment="Left" Height="148" Margin="1154,31,0,0" VerticalAlignment="Top" Width="346" FocusVisualPrimaryBrush="White" Canvas.Left="1099" Canvas.Top="30">
+        <Rectangle HorizontalAlignment="Left" Height="148" Margin="0,0,0,0" VerticalAlignment="Top" Width="346" FocusVisualPrimaryBrush="White" Canvas.Left="1099" Canvas.Top="30">
             <Rectangle.Fill>
                 <AcrylicBrush/>
             </Rectangle.Fill>
         </Rectangle>
         <Button Content="Back" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Height="104" Width="221" Click="Button_Click" FocusVisualPrimaryBrush="White" Foreground="Black" FontSize="70" BorderBrush="White" FocusVisualSecondaryBrush="{x:Null}" FontFamily="Arial Black" FontWeight="Bold" Background="#FFF3E9E9" ClickMode="Press" Canvas.Left="517" Canvas.Top="207"/>
-        <TextBox Name="money_bar" Canvas.Left="1257" Canvas.Top="55" Text="100" TextWrapping="Wrap" Height="109" Width="162" FontSize="80" Margin="1292,51,0,840" IsReadOnly="True" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left"/>
         <TextBlock HorizontalAlignment="Left" Margin="134,31,0,0" Text="Shop" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="72" FontFamily="Arial Black" FontWeight="Bold" Canvas.Left="15" Canvas.Top="33"/>
         <Image Source="ms-appx:///Content/images/football_image.png" Width="144" Height="154" Canvas.Left="666" Canvas.Top="2" FocusVisualSecondaryBrush="#99FFFFFF" RenderTransformOrigin="0.476,0.448" Margin="678,26,678,820" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <ListView Name="TransList" Canvas.Left="6" Canvas.Top="301" Background="#FFF3E9E9" Margin="4,376,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <ListView x:Name="TransList" Canvas.Left="6" Canvas.Top="301" Background="#FFF3E9E9" Margin="4,376,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <ListView.HeaderTemplate>
                 <DataTemplate>
                     <Grid Background="{ThemeResource SystemBaseLowColor}" Height="50">
@@ -63,8 +65,10 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Image Source="ms-appx:///Content/images/coin.png" Height="132" Canvas.Left="1105" Canvas.Top="41" Width="140" Margin="1151,37,209,831"/>
-        
+        <Image Source="ms-appx:///Content/images/coin.png" Height="132" Canvas.Left="1105" Canvas.Top="41" Width="140" HorizontalAlignment="Stretch" Margin="994,52,366,816" VerticalAlignment="Stretch"/>
+        <TextBox x:Name="money_bar" Canvas.Left="1257" Canvas.Top="55" Text="100" TextWrapping="Wrap" Height="109" Width="162" FontSize="80" Margin="1166,67,172,824" IsReadOnly="True" BorderBrush="{x:Null}" Background="{x:Null}" SelectionHighlightColor="#FF00B7C3"/>
+
+
 
     </Grid>
 </Page>

@@ -16,10 +16,12 @@ namespace FootballAIGame
     {
         Vector2 playerDims;
         List<FootballPlayer> transferList;
+        Currency currency = new Currency();
         public Shop()
         {
             this.InitializeComponent();
             LoadTransfers();
+            money_bar.Text = currency.getCurrency().ToString();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

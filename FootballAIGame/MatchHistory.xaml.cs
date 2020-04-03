@@ -26,13 +26,13 @@ namespace FootballAIGame
     /// </summary>
     public sealed partial class MatchHistory : Page
     {
-        private string money = "50";
         private int number = 0;
+        Currency currency = new Currency();
         public MatchHistory()
         {
             this.InitializeComponent();
             LoadMatchHistory();
-            money_bar.Text = money;
+            money_bar.Text = currency.getCurrency().ToString();
         }
         public async void LoadMatchHistory()
         {
