@@ -10,6 +10,7 @@ using System.Threading;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using System;
+using System.Diagnostics;
 
 namespace FootballAIGame
 {
@@ -50,7 +51,7 @@ namespace FootballAIGame
             this.field = new Field(new Team(new LinkedList<FootballPlayer>()), 
                 new Team(new LinkedList<FootballPlayer>()), new Ball());
 
-            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(30, 30), 
+            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(60, 60), 
 
                 "humanplayer", 10, 10, 10, "2d/sprite", "human"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 60),
@@ -61,7 +62,7 @@ namespace FootballAIGame
                 "attacker", 10, 10, 10, "2d/sprite", "attacker"));
 
             field.teamOut.players.AddLast(new FootballPlayer(playerDims, new Vector2(600, 400),
-    "attacker", 10, 10, 10, "2d/sprite", "attacker"));
+                "attacker", 10, 10, 10, "2d/sprite", "attacker"));
 
 
             field.InitiateTasks();
@@ -85,10 +86,6 @@ namespace FootballAIGame
 
         public async void SaveMatchHistory(ScoreBoard gameBoard)
         {
-            //Now score is set here, needs to be set when the game is finished
-            gameBoard.OutScore = 7;
-            gameBoard.HomeScore = 77;
-            //string json = JsonConvert.SerializeObject(gameBoard);
             List<ScoreBoard> boards = new List<ScoreBoard>();
             boards.Add(gameBoard);
             boards.Add(gameBoard);
@@ -117,6 +114,19 @@ namespace FootballAIGame
 
         }
 
+        private void Goal() {
+            if(Globals.ball.pos.Y > 250-70 && Globals.ball.pos.Y < 250 + 70) {
+                if(Globals.ball.pos.X <= 50) {
+                    board.OutScore += 1;
+                    Debug.WriteLine("Score: Home{0},  Out{1}", board.HomeScore, board.OutScore);
+                }
+                else if(Globals.ball.pos.X >= 950) {
+                    board.HomeScore += 1;
+                    Debug.WriteLine("Score: Home{0},  Out{1}", board.HomeScore, board.OutScore);
+                }
+            }
+        }
+
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// game-specific content.
@@ -137,7 +147,9 @@ namespace FootballAIGame
             Globals.keyboard.Update();
             field.Update();
             Globals.keyboard.UpdateOld();
+            Goal();
             base.Update(gameTime);
+            
         }
 
         /// <summary>

@@ -10,11 +10,10 @@ namespace FootballAIGame
     class FootballTypes
     {
         public static void DefenderAI(FootballPlayer player) {
-            
         }
 
         public static void AttackerAI(FootballPlayer player) {
-
+            player.pos = player.move(player.pos);
         }
 
         public static void MidfielderAI(FootballPlayer player) {
@@ -42,6 +41,10 @@ namespace FootballAIGame
             }
             if (Globals.keyboard.GetPress("D")) {
                 player.AddDirection(2);
+            }
+            if (Globals.keyboard.GetPress("Space"))
+            {
+                player.Shoot(player);
             }
         }
     }

@@ -19,6 +19,7 @@ namespace FootballAIGame
     public class FootballPlayer
     {
         public Vector2 pos;
+        public Vector2 startLocation;
         public Vector2 dims;
         public Vector2 focus;
         public string name;
@@ -34,6 +35,7 @@ namespace FootballAIGame
         public bool hasBall;
         public bool hadDistance;
         public bool moving;
+        
 
 
         public FootballPlayer(Vector2 dims, Vector2 pos, string name, int speed,
@@ -50,6 +52,7 @@ namespace FootballAIGame
             SetDeligate(playerType);
             this.playerType = playerType;
             hadDistance = true;
+            startLocation = new Vector2(pos.X, pos.Y);
         }
 
         private void SetDeligate(string playerType) {
@@ -108,12 +111,11 @@ namespace FootballAIGame
                 hadDistance = true;
             }
         }
-        //TODO: fix fucking space to something ai could also do...
-        private void Shoot()
+        public void Shoot(FootballPlayer player)
         {
-            if(hasBall && Globals.keyboard.GetPress("Space")) {
-                Globals.ball.Shoot(direction);
-                hasBall = false;
+            if(player.hasBall) {
+                Globals.ball.Shoot(player.direction);
+                player.hasBall = false;
             }
         }
         
@@ -139,7 +141,6 @@ namespace FootballAIGame
         public void Update() { 
             delegateMovement(this);
             MoveBall();
-            Shoot();
         }
 
         public void Draw() {

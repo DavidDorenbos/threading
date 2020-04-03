@@ -27,6 +27,7 @@ namespace FootballAIGame {
         private Ball ball;
         private Texture2D goal;
         private Dictionary<string, Node> tasks = new Dictionary<string, Node>();
+        public ScoreBoard scoreBoard;
         //public Field() {
         //players = new LinkedList<FootballPlayer>();
         //players.AddFirst(new FootballPlayer("2d/sprite", new Vector2(300, 300), new Vector2(48, 48)));
@@ -87,7 +88,7 @@ namespace FootballAIGame {
         private void PlayerOnBall() {
             if (!teamHome.hasBall) {
                 foreach(FootballPlayer player in teamHome.players) {
-                    if (Globals.ball.GetDistance(player.pos) < 5f && player.hadDistance && !Globals.ball.shot) {
+                    if (Globals.ball.GetDistance(player.pos) < 8f && player.hadDistance && !Globals.ball.shot) {
                         player.hasBall = true;
                         player.hadDistance = false;
                         teamHome.hasBall = true;
@@ -100,7 +101,7 @@ namespace FootballAIGame {
             }
             if(!teamOut.hasBall) {
                 foreach(FootballPlayer player in teamOut.players) {
-                    if (Globals.ball.GetDistance(player.pos) < 5f && player.hadDistance && !Globals.ball.shot)
+                    if (Globals.ball.GetDistance(player.pos) < 8f && player.hadDistance && !Globals.ball.shot)
                     {
                         player.hasBall = true;
                         player.hadDistance = false;
@@ -151,7 +152,8 @@ namespace FootballAIGame {
             teamOut.Draw();
             ball.Draw();
             hasShot();
-            drawGoal(new Vector2(25, 50));
+            drawGoal(new Vector2(25, 250));
+            drawGoal(new Vector2(975, 250));
         }
     }
 }
