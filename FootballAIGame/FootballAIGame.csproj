@@ -191,6 +191,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Shop.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TeamManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
