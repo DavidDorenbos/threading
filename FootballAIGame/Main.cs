@@ -50,18 +50,15 @@ namespace FootballAIGame
             this.field = new Field(new Team(new LinkedList<FootballPlayer>()), 
                 new Team(new LinkedList<FootballPlayer>()), new Ball());
 
-            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(30, 30), 
+            field.teamHome.players.AddFirst(new FootballPlayer(playerDims, new Vector2(60, 60), 
 
-                "humanplayer", 10, 10, 10, "2d/sprite", "human"));
+                "Frits", 10, 10, 10, "2d/sprite", "human"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 60),
-                "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
+                "Jan", 10, 10, 10, "2d/sprite", "midfielder"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 500),
-                "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
+                "Pieter", 10, 10, 10, "2d/sprite", "midfielder"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(360, 60),
-                "attacker", 10, 10, 10, "2d/sprite", "attacker"));
-
-            field.teamOut.players.AddLast(new FootballPlayer(playerDims, new Vector2(600, 400),
-    "attacker", 10, 10, 10, "2d/sprite", "attacker"));
+                "Kees", 10, 10, 10, "2d/sprite", "attacker"));
 
 
             field.InitiateTasks();

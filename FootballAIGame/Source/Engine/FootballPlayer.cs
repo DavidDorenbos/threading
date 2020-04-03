@@ -35,6 +35,10 @@ namespace FootballAIGame
         public bool hadDistance;
         public bool moving;
 
+        public string NamePropertyBinding { get; set; }
+        public string PlayerTypePropertyBinding { get; set; }
+        public int SpeedPropertyBinding { get; set; }
+        public int StrengthPropertyBinding { get; set; }
 
         public FootballPlayer(Vector2 dims, Vector2 pos, string name, int speed,
             int strength, int price, string path, string playerType) {
@@ -50,6 +54,12 @@ namespace FootballAIGame
             SetDeligate(playerType);
             this.playerType = playerType;
             hadDistance = true;
+
+            this.NamePropertyBinding = name;
+            this.PlayerTypePropertyBinding = playerType;
+            this.SpeedPropertyBinding = speed;
+            this.StrengthPropertyBinding = speed;
+
         }
 
         private void SetDeligate(string playerType) {
