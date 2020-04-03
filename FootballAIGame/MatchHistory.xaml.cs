@@ -36,22 +36,28 @@ namespace FootballAIGame
 
         }
 
-        public void LoadMatchHistory()
+        public async void LoadMatchHistory()
         {
-            String JSONtxt = File.ReadAllText(ApplicationData.Current.LocalFolder.Path + "/ScoreBoard.json");
-            List<ScoreBoard> boards = JsonConvert.DeserializeObject<List<ScoreBoard>>(JSONtxt);
+            var item = await ApplicationData.Current.LocalFolder.TryGetItemAsync("ScoreBoard.json");
 
-
-            ObservableCollection<ScoreBoard> observableScoreBoards = new ObservableCollection<ScoreBoard>();
-
-            foreach (ScoreBoard board in boards)
+            if (item != null)
             {
-                observableScoreBoards.Add(board);
+                String JSONtxt = File.ReadAllText(ApplicationData.Current.LocalFolder.Path + "/ScoreBoard.json");
+                List<ScoreBoard> boards = JsonConvert.DeserializeObject<List<ScoreBoard>>(JSONtxt);
+
+
+                ObservableCollection<ScoreBoard> observableScoreBoards = new ObservableCollection<ScoreBoard>();
+
+                foreach (ScoreBoard board in boards)
+                {
+                    observableScoreBoards.Add(board);
+                }
+
+                // Create a new ListView (or GridView) for the UI, add content by setting ItemsSource
+                ListView ContactsLV = new ListView();
+                StudentsList.ItemsSource = observableScoreBoards;
             }
 
-            // Create a new ListView (or GridView) for the UI, add content by setting ItemsSource
-            ListView ContactsLV = new ListView();
-            StudentsList.ItemsSource = observableScoreBoards;
         }
 
     }

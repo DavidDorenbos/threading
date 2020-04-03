@@ -77,25 +77,30 @@ namespace FootballAIGame
         public async void SaveMatchHistory(ScoreBoard gameBoard)
         {
             //Now score is set here, needs to be set when the game is finished
-            gameBoard.OutScore = 8;
-            gameBoard.HomeScore = 88;
-            string json = JsonConvert.SerializeObject(gameBoard);
-            String JSONtxt = File.ReadAllText(ApplicationData.Current.LocalFolder.Path + "/ScoreBoard.json");
-            List<ScoreBoard> boards = JsonConvert.DeserializeObject<List<ScoreBoard>>(JSONtxt);
+            gameBoard.OutScore = 7;
+            gameBoard.HomeScore = 77;
+            //string json = JsonConvert.SerializeObject(gameBoard);
+            List<ScoreBoard> boards = new List<ScoreBoard>();
+            boards.Add(gameBoard);
             boards.Add(gameBoard);
             string outputJSON = Newtonsoft.Json.JsonConvert.SerializeObject(boards, Newtonsoft.Json.Formatting.Indented);
-            string jsonBoards = JsonConvert.SerializeObject(boards, Formatting.Indented);
+            //string jsonBoards = JsonConvert.SerializeObject(boards, Formatting.Indented);
             var item = await ApplicationData.Current.LocalFolder.TryGetItemAsync("ScoreBoard.json");
 
             if (item != null)
             {
+                String JSONtxt = File.ReadAllText(ApplicationData.Current.LocalFolder.Path + "/ScoreBoard.json");
+                boards = JsonConvert.DeserializeObject<List<ScoreBoard>>(JSONtxt);
+                
+
+                //string outputJSON = Newtonsoft.Json.JsonConvert.SerializeObject(boards, Newtonsoft.Json.Formatting.Indented);
                 var file = await ApplicationData.Current.LocalFolder.GetFileAsync("ScoreBoard.json");
                 await FileIO.WriteTextAsync(file, outputJSON + Environment.NewLine);
             }
             else
             {
                 var file = await ApplicationData.Current.LocalFolder.CreateFileAsync("ScoreBoard.json");
-                await FileIO.WriteTextAsync(file, json);
+                await FileIO.WriteTextAsync(file, outputJSON);
             }
 
 
