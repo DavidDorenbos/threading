@@ -9,26 +9,31 @@ namespace FootballAIGame
     public class UI
     {
         public SpriteFont font;
+        private ScoreBoard board;
         public UI()
         {
             font = Globals.content.Load<SpriteFont>("Fonts\\Arial16");
+            board = new ScoreBoard();
         }
 
-        public void Update(Field field)
+        public void Update()
         {
 
         }
 
-        public void Draw(Field field)
+        public void goalHome()
         {
-           
+            board.HomeScore += 1;
+        }
 
-            Globals.spriteBatch.DrawString(font, "Score", new Vector2(100, 200), Color.Black);
+        public void goalOut()
+        {
+            board.OutScore += 1;
+        }
 
-            /*
-            string tempStr = "ScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScoredScored";
-            Vector2 strDims = font.MeasureString(tempStr);
-            Globals.spriteBatch.DrawString(font, tempStr, new Vector2(Globals.screenWidth * 2 - strDims.X*2, Globals.screenHeight), Color.Green);*/
+        public void Draw()
+        {
+            Globals.spriteBatch.DrawString(font, ("Score: Home " + board.HomeScore + " : Out " + board.OutScore ), new Vector2(10, 100), Color.Black);
         }
     }
 }

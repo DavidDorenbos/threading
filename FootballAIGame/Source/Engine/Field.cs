@@ -85,7 +85,7 @@ namespace FootballAIGame {
             }
             Task.Run(() => { PlayerOnBall(); });
             ball.Update();
-            ui.Update(this);
+            ui.Update();
         }
 
 
@@ -159,7 +159,7 @@ namespace FootballAIGame {
             hasShot();
             drawGoal(new Vector2(25, 250));
             drawGoal(new Vector2(975, 250));
-            ui.Draw(this);
+            ui.Draw();
         }
     }
 }
