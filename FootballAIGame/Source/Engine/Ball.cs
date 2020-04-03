@@ -23,7 +23,7 @@ namespace FootballAIGame
         private bool bounceBool;
         public Ball()
         {
-            pos = new Vector2(100, 100);
+            pos = new Vector2(1000/2, 500/2);
             dims = new Vector2(20, 20);
             Globals.ball = this;
             taken = false;

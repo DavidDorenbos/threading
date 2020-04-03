@@ -58,7 +58,7 @@ namespace FootballAIGame
                 "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
             field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(200, 500),
                 "midfielder", 10, 10, 10, "2d/sprite", "midfielder"));
-            field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(360, 60),
+            field.teamHome.players.AddLast(new FootballPlayer(playerDims, new Vector2(360, 100),
                 "attacker", 10, 10, 10, "2d/sprite", "attacker"));
 
             field.teamOut.players.AddLast(new FootballPlayer(playerDims, new Vector2(600, 400),
